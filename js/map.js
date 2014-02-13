@@ -1,6 +1,8 @@
 function Map() {
 	this.x;
 	this.y;
+	this.prev_x;
+	this.prev_y;
 }
 
 Map.prototype = {
@@ -11,6 +13,8 @@ Map.prototype = {
 		Map.prototype.randomAction();
 	},
 	render:function(p_x,p_y) {
+		this.prev_y = this.y;
+		this.prev_x = this.x;
 		//check for map boundaries
 		this.x = p_x+1;
 		this.y = p_y+1;
@@ -54,9 +58,9 @@ Map.prototype = {
 	    main.appendChild(root);
 	},
 	randomAction:function(x,y) {
-		console.log(this.x,this.y);
 		var derp = document.querySelector("td[data-x='"+this.x+"'][data-y='"+this.y+"']");
 		derp.style.backgroundColor = "red";
+		if (this.x ==  this.prev_x && this.y == this.prev_y) return;
 		if ((Math.random() < .3)) derp.textContent = "ZOMBIE!!!";
 		else if ((Math.random() > .8)) derp.textContent = "You found a gun!";
 		else derp.textContent = "Nothing here...";
