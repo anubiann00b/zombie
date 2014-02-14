@@ -1,8 +1,10 @@
 function Elements() {
 	this.stats = document.getElementById("stats");
-	this.log = document.getElementById("log");
+	this.eventLog = document.getElementById("log");
 	this.xy = document.getElementById("location");
-	this.hp = document.getElementById("hp_percent");
+	this.healthBar = document.getElementById("hp_percent");
+	this.hp = document.getElementById("hp");
+	this.maxHP = document.getElementById("maxHP");
 	this.cell;
 }
 
@@ -10,16 +12,21 @@ Elements.prototype = {
 	setXY : function(x,y) {
 		this.xy.textContent = "("+x+","+y+")"; 
 	},
-	log : function(msg) {
-		this.log.textContent = msg;
+	eventMsg : function(msg) {
+		var old_msg = this.eventLog.innerHTML;
+		this.eventLog.innerHTML = "<li>"+msg+"</li>"+old_msg;
 	},
 	updateCell : function(x,y,msg) {
-		var cell = document.querySelector("td[data-x='"+x+"'][data-y='"+y+"']");
+		this.cell = document.querySelector("td[data-x='"+x+"'][data-y='"+y+"']");
 		cell.style.backgroundColor = "red";
 		cell.textContent = msg;
 	},
 	hpBar : function() {
-		this.hp.style.width = ((map.player.hp / map.player.maxHP)*100)+"%";
-		console.log(this.hp.style)
+		this.healthBar.style.width = ((map.player.hp / map.player.maxHP)*100)+"%";
+		console.log(this.healthBar.style.width);
+	},
+	health : function() {
+		this.hp.textContent = map.player.hp;
+		this.maxHP.textContent = map.player.maxHP;
 	}
 }

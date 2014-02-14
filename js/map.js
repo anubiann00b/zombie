@@ -18,6 +18,7 @@ Map.prototype = {
 		this.cellAction();
 	},
 	render:function(p_x,p_y) {
+		this.elements.health();
 		//grab tile location to track previous location
 		this.prev_y = this.y;
 		this.prev_x = this.x;
@@ -72,9 +73,11 @@ Map.prototype = {
 	    main.appendChild(root);
 	},
 	cellAction:function() {
+		this.elements.eventMsg("You have moved to ("+this.x+","+this.y+")");
 		this.player.hp--;
 		if (this.player.hp <= 0) this.player.hp = 0;
 		this.elements.hpBar();
+		this.elements.health();
 		var msg = " ";
 		this.elements.updateCell(this.x,this.y,msg);
 		//if you clicked on the same tile, no action should occur
