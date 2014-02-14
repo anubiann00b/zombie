@@ -14,7 +14,7 @@ Map.prototype = {
 		//render new map
 		this.render(new_x, new_y);
 		//actions? to-do :fix me
-		this.randomAction();
+		this.cellAction();
 	},
 	render:function(p_x,p_y) {
 		//grab tile location to track previous location
@@ -52,6 +52,7 @@ Map.prototype = {
 	            	//set data attribute
 	                cell.setAttribute("data-x",x);
 	                cell.setAttribute("data-y",y);
+
 	                //add event handler for the click event (move)
 	                cell.addEventListener("click", this.move.bind(this,cell), false);
 	                cell.className = 'map';
@@ -69,18 +70,23 @@ Map.prototype = {
 	    //remove old table, add new one
 	    main.appendChild(root);
 	},
-	randomAction:function(x,y) {
-		//map actions should be in their own proto object "Actions"
-		var derp = document.querySelector("td[data-x='"+this.x+"'][data-y='"+this.y+"']");
-		derp.style.backgroundColor = "red";
+	cellAction:function() {
+		var msg = " ";
+		this.elements.updateCell(this.x,this.y,msg);
 		//if you clicked on the same tile, no action should occur
-		if (this.x ==  this.prev_x && this.y == this.prev_y) return;
-
+		if (this.x ==  this.prev_x && this.y == this.prev_y) {
+			return;
+		}
 		//fix me
 		//these are not real actions
-		if ((Math.random() < .3)) derp.textContent = "ZOMBIE!!!";
-		else if ((Math.random() > .8)) derp.textContent = "You found a gun!";
-		else derp.textContent = "Nothing here...";
+		//action should look like msg = this.actions.trigger();
+		//trigger should return a cell message and "trigger" a modal popup for actions
+		if ((Math.random() < .3)) msg = "ZOMBIE!!!";
+		else if ((Math.random() > .8)) msg = "You found a gun!";
+		else msg = "Nothing here...";
+
+		//map actions should be in their own proto object "Actions"
+		this.elements.updateCell(this.x,this.y,msg);
 	}
 }
 
