@@ -41,3 +41,16 @@ h2, h1, h3, h4, h5, h6 {
 td.map {
 	background-color:#DDD;
 }
+.health {
+	height:10px;
+	position:relative;
+	width:80%;
+	display:inline-block;
+}
+.health > span {
+	display: block;
+	height: 100%;
+	background-color: green;
+	position: relative;
+	overflow: hidden;
+}

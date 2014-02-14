@@ -4,6 +4,7 @@ function Map() {
 	this.prev_x;
 	this.prev_y;
 	this.elements = new Elements();
+	this.player = new Player();
 }
 
 Map.prototype = {
@@ -71,6 +72,9 @@ Map.prototype = {
 	    main.appendChild(root);
 	},
 	cellAction:function() {
+		this.player.hp--;
+		if (this.player.hp <= 0) this.player.hp = 0;
+		this.elements.hpBar();
 		var msg = " ";
 		this.elements.updateCell(this.x,this.y,msg);
 		//if you clicked on the same tile, no action should occur
