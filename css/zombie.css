@@ -34,7 +34,7 @@ body {
 	border:1px solid red;
 	height:450px;
 }
-h2, h1, h3, h4, h5, h6, body {
+h2, h1, h3, h4, h5, h6 {
 	text-align: center;
 	color:red;
 }
