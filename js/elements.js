@@ -7,5 +7,8 @@ function Elements() {
 Elements.prototype = {
 	setXY : function(x,y) {
 		this.xy.textContent = "("+x+","+y+")"; 
+	},
+	log : function(msg) {
+		this.log.textContent = msg;
 	}
 }

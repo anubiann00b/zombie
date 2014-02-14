@@ -34,6 +34,7 @@ Map.prototype = {
 	    if(p_x >= 100) p_x--;
 	    if(p_y >= 100) p_y--;
 
+	    //max divs for loop
 	    divs_x = max_divs + p_x;
 	    divs_y = max_divs + p_y;
 	    //create new table
