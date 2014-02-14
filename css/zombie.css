@@ -24,16 +24,7 @@ body {
 	height:100%;
 	border:1px solid red;
 }
-#stats {
-	float:left;
-	overflow:hidden;
-	color: red;
-	width:20%;
-	border:1px solid red;
-	height:450px;
-	padding:5px;
-}
-#log {
+#log, #stats {
 	padding:5px;
 	float:left;
 	overflow: hidden;
