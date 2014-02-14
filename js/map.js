@@ -3,17 +3,18 @@ function Map() {
 	this.y;
 	this.prev_x;
 	this.prev_y;
+	this.elements = new Elements();
 }
 
 Map.prototype = {
-	move:function() {
+	move:function(cell) {
 		//get data attribute for xy location
-		var new_x = this.getAttribute("data-x") - 1;
-		var new_y = this.getAttribute("data-y") - 1;
+		var new_x = cell.getAttribute("data-x") - 1;
+		var new_y = cell.getAttribute("data-y") - 1;
 		//render new map
-		Map.prototype.render(new_x, new_y);
+		this.render(new_x, new_y);
 		//actions? to-do :fix me
-		Map.prototype.randomAction();
+		this.randomAction();
 	},
 	render:function(p_x,p_y) {
 		//grab tile location to track previous location
@@ -24,9 +25,7 @@ Map.prototype = {
 		this.x = p_x+1;
 		this.y = p_y+1;
 		//display new coordinates
-		//fix me
-		//element handling should be separate from the map engine
-		document.getElementById("location").textContent = "("+this.x+","+this.y+")"; 
+		this.elements.setXY(this.x,this.y);
 		var max_divs = 2;
 
 		//borders
@@ -53,7 +52,7 @@ Map.prototype = {
 	                cell.setAttribute("data-x",x);
 	                cell.setAttribute("data-y",y);
 	                //add event handler for the click event (move)
-	                cell.addEventListener("click", this.move, false);
+	                cell.addEventListener("click", this.move.bind(this,cell), false);
 	                cell.className = 'map';
 	            }
 	            //add cell to row
@@ -73,7 +72,11 @@ Map.prototype = {
 		//map actions should be in their own proto object "Actions"
 		var derp = document.querySelector("td[data-x='"+this.x+"'][data-y='"+this.y+"']");
 		derp.style.backgroundColor = "red";
+		//if you clicked on the same tile, no action should occur
 		if (this.x ==  this.prev_x && this.y == this.prev_y) return;
+
+		//fix me
+		//these are not real actions
 		if ((Math.random() < .3)) derp.textContent = "ZOMBIE!!!";
 		else if ((Math.random() > .8)) derp.textContent = "You found a gun!";
 		else derp.textContent = "Nothing here...";
