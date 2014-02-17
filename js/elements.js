@@ -18,8 +18,8 @@ Elements.prototype = {
 	},
 	updateCell : function(x,y,msg) {
 		this.cell = document.querySelector("td[data-x='"+x+"'][data-y='"+y+"']");
-		cell.style.backgroundColor = "red";
-		cell.textContent = msg;
+		this.cell.style.backgroundColor = "red";
+		this.cell.textContent = msg;
 	},
 	hpBar : function() {
 		this.healthBar.style.width = ((map.player.hp / map.player.maxHP)*100)+"%";
