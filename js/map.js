@@ -88,9 +88,9 @@ Map.prototype = {
 		//these are not real actions
 		//action should look like msg = this.actions.trigger();
 		//trigger should return a cell message and "trigger" a modal popup for actions
-		if ((Math.random() < .3)) msg = "ZOMBIE!!!";
-		else if ((Math.random() > .8)) msg = "You found a gun!";
-		else msg = "Nothing here...";
+		if ((Math.random() < .15)) this.elements.modalOpen("ZOMBIE!!!");
+		else if ((Math.random() > .85)) this.elements.modalOpen("You found a knife...");
+		else msg = "Nothing here";
 
 		//map actions should be in their own proto object "Actions"
 		this.elements.updateCell(this.x,this.y,msg);

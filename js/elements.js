@@ -5,6 +5,8 @@ function Elements() {
 	this.healthBar = document.getElementById("hp_percent");
 	this.hp = document.getElementById("hp");
 	this.maxHP = document.getElementById("maxHP");
+	this.overlay = document.getElementById("overlay");
+	this.modal = document.querySelector(".modal");
 	this.cell;
 }
 
@@ -23,10 +25,20 @@ Elements.prototype = {
 	},
 	hpBar : function() {
 		this.healthBar.style.width = ((map.player.hp / map.player.maxHP)*100)+"%";
-		console.log(this.healthBar.style.width);
 	},
 	health : function() {
 		this.hp.textContent = map.player.hp;
 		this.maxHP.textContent = map.player.maxHP;
+	},
+	triggerOverlay : function() {
+		this.overlay.style.visibility = (this.overlay.style.visibility == "visible") ? "hidden" : "visible";
+	},
+	modalOpen : function(txt) {
+		this.triggerOverlay();
+		this.modal.textContent = txt;
+		setTimeout(function() {
+			map.elements.modal.innerHTML = "";
+			map.elements.triggerOverlay();
+		},2000);
 	}
 }
