@@ -5,6 +5,7 @@ function Map() {
 	this.prev_y;
 	this.elements = new Elements();
 	this.player = new Player();
+	this.enemy = new Enemy();
 }
 
 Map.prototype = {
@@ -79,20 +80,20 @@ Map.prototype = {
 		this.elements.hpBar();
 		this.elements.health();
 		var msg = " ";
+		//highlight cell just in case conflicting tile is returned
 		this.elements.updateCell(this.x,this.y,msg);
+
 		//if you clicked on the same tile, no action should occur
 		if (this.x ==  this.prev_x && this.y == this.prev_y) {
 			return;
 		}
+
 		//fix me
-		//these are not real actions
-		//action should look like msg = this.actions.trigger();
-		//trigger should return a cell message and "trigger" a modal popup for actions
-		if ((Math.random() < .15)) this.elements.modalOpen("ZOMBIE!!!");
-		else if ((Math.random() > .85)) this.elements.modalOpen("You found a knife...");
+		if ((Math.random() < .15)) {
+			this.elements.battle("You've Been Attacked!");
+		}
 		else msg = "Nothing here";
 
-		//map actions should be in their own proto object "Actions"
 		this.elements.updateCell(this.x,this.y,msg);
 	}
 }

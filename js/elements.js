@@ -33,12 +33,21 @@ Elements.prototype = {
 	triggerOverlay : function() {
 		this.overlay.style.visibility = (this.overlay.style.visibility == "visible") ? "hidden" : "visible";
 	},
-	modalOpen : function(txt) {
+	battle : function(title) {
+		var header = document.createElement("h4");
+		header.textContent = title;
+		var bod = document.createElement("div");
+		bod.className = "battleLog";
+		var strike = document.createElement("div");
+		strike.className = "button battleAction";
+		strike.textContent = "Attack";
+		var run = document.createElement("div");
+		run.className = "button battleAction";
+		run.textContent = "Run!"
+		this.modal.appendChild(header);
+		this.modal.appendChild(bod);
+		this.modal.appendChild(strike);
+		this.modal.appendChild(run);
 		this.triggerOverlay();
-		this.modal.textContent = txt;
-		setTimeout(function() {
-			map.elements.modal.innerHTML = "";
-			map.elements.triggerOverlay();
-		},2000);
 	}
 }
