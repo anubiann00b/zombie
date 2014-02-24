@@ -95,4 +95,10 @@ td.map {
 	display:inline-block;
 	margin:3px;
 }
-.battleAction:hover { text-decoration: underline; }
+.battleAction:hover { 
+	text-decoration: underline; 
+}
+#hp_percent {
+	width:100%;
+	transition-duration:0.30s;
+}

@@ -1,4 +1,5 @@
 function Enemy() {
+	//array of enemy objects
 	this.enemies = [
 		{
 			name:"Zombie",
@@ -18,6 +19,8 @@ function Enemy() {
 }
 
 Enemy.prototype = {
+	//return a clone
+	//so that OG object isn't mutated and you can spawn multiple of one type
 	spawn:function(id) {
 		var clone = this.enemies[id];
 		return clone;

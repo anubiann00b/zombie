@@ -75,10 +75,6 @@ Map.prototype = {
 	},
 	cellAction:function() {
 		this.elements.eventMsg("You have moved to ("+this.x+","+this.y+")");
-		this.player.hp--;
-		if (this.player.hp <= 0) this.player.hp = 0;
-		this.elements.hpBar();
-		this.elements.health();
 		var msg = " ";
 		//highlight cell just in case conflicting tile is returned
 		this.elements.updateCell(this.x,this.y,msg);
@@ -88,8 +84,11 @@ Map.prototype = {
 			return;
 		}
 
+		//go away you whore
+		this.player.setHP(-1);
+
 		//fix me
-		if ((Math.random() < .15)) {
+		if ((Math.random() < .1)) {
 			this.elements.battle("You've Been Attacked!");
 		}
 		else msg = "Nothing here";
