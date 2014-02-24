@@ -38,7 +38,7 @@ Elements.prototype = {
 		if (prev > newHP) (prev -= .1);
 		else (prev += .1);
 		this.healthBar.style.width = prev+"%";
-		var x = setTimeout(map.elements.hpBar ,10);
+		var x = setTimeout(map.elements.hpBar.bind(this,map.elements.hpBar) ,10);
 		this.healthBar.style.width = ((map.player.hp / map.player.maxHP)*100)+"%";
 	},
 	//set elements to reflect actual HP and Max HP
