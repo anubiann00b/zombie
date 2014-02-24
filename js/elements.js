@@ -30,6 +30,10 @@ Elements.prototype = {
 		this.hp.textContent = map.player.hp;
 		this.maxHP.textContent = map.player.maxHP;
 	},
+	clearModal : function() {
+		this.modal.innerHTML = null;
+		this.triggerOverlay();
+	},
 	triggerOverlay : function() {
 		this.overlay.style.visibility = (this.overlay.style.visibility == "visible") ? "hidden" : "visible";
 	},
@@ -43,7 +47,8 @@ Elements.prototype = {
 		strike.textContent = "Attack";
 		var run = document.createElement("div");
 		run.className = "button battleAction";
-		run.textContent = "Run!"
+		run.textContent = "Run!";
+		run.addEventListener("click",this.clearModal.bind(this,run),false);
 		this.modal.appendChild(header);
 		this.modal.appendChild(bod);
 		this.modal.appendChild(strike);
