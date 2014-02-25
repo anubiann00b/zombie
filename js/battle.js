@@ -12,13 +12,15 @@ Battle.prototype = {
 		var txt = "- You strike the "+this.foe.name+" with your "+map.player.equipName+" for "+randDmg+" dmg!";
 		this.foe.hp = parseInt(this.foe.hp) - parseInt(randDmg);
 		map.elements.displayEnemy(this.foe);
-		map.elements.battleEvents(txt);
+		map.elements.battleEvent(txt);
 		if (this.foe.hp <= 0) {
 			this.foe.hp = 0;
+			map.elements.displayEnemy(this.foe);
 			this.battleOver();
 		}
 	},
 	battleOver : function() {
-		map.elements.clearModal();
+		map.elements.battleEvent("- You have defeated the "+this.foe.name+"!");
+		setTimeout(map.elements.clearModal.bind(map.elements),2500);
 	}
 }

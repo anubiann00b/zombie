@@ -19,17 +19,16 @@ function Elements() {
 
 Elements.prototype = {
 	//battle log
-	battleEvents : function(msg) {
+	battleEvent : function(msg) {
 		this.btxt = document.getElementById("battleTxt");
 		this.btxt.innerHTML = msg + "<br />" + this.btxt.innerHTML;
 	},
 	//display enemy stats in battle
-	displayEnemy : function(enemy,msg) {
+	displayEnemy : function(enemy) {
 		this.btxt = document.getElementById("battleTxt");
 		this.foeStats = document.getElementById("eHP");
 		this.e = document.getElementById("estats");
 		this.e.innerHTML = enemy.name+": HP: <span id='enemyHealth'>"+enemy.hp+"</span>/"+enemy.maxHP;
-		//this.btxt.innerHTML = msg + "<br />" + btxt.innerHTML;
 	},
 	//set XY location on header
 	setXY : function(x,y) {
