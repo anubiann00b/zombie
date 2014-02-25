@@ -114,3 +114,10 @@ td.map {
 	text-align:center;
 	z-index:9999;
 }
+#footer {
+	position:absolute;
+	bottom:0;
+	width:95%;
+	height:20px;
+	color:red;
+}
