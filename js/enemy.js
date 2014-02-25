@@ -6,14 +6,16 @@ function Enemy() {
 			level:1,
 			min:0,
 			max:2,
-			hp:8
+			hp:8,
+			maxHP:8
 		},
 		{
 			name:"Zombie",
 			level:2,
 			min:1,
 			max:4,
-			hp:15
+			hp:15,
+			maxHP:15
 		}
 	];
 }

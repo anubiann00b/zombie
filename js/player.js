@@ -3,6 +3,7 @@ function Player() {
 	this.maxHP = 15;
 	this.min = 1;
 	this.max = 3;
+	this.equipName = "Fists";
 }
 
 Player.prototype = {

@@ -90,6 +90,8 @@ Map.prototype = {
 		//fix me
 		if ((Math.random() < .1)) {
 			this.elements.battle("You've Been Attacked!");
+			battle = new Battle(0);
+			battle.init();
 		}
 		else msg = "Nothing here";
 

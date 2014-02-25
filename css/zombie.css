@@ -67,7 +67,7 @@ td.map {
 }
 .modal {
     width:300px;
-    height:300px;
+    height:335px;
     margin: 100px auto;
     background-color: #fff;
     border:1px solid #000;
@@ -77,10 +77,13 @@ td.map {
 }
 .battleLog {
 	width:275px;
-	height:200px;
+	height:225px;
 	overflow:hidden;
 	border:1px solid black;
 	margin:0 auto;
+	position: relative;
+	text-align: left;
+	overflow:scroll;
 }
 .button {
 	position: relative;
@@ -101,4 +104,13 @@ td.map {
 #hp_percent {
 	width:100%;
 	transition-duration:0.30s;
+}
+.enemyStats {
+	vertical-align: bottom;
+	margin:0 auto;
+	position: absolute;
+	bottom:0;
+	width:100%;
+	text-align:center;
+	z-index:9999;
 }

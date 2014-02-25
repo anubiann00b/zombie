@@ -10,9 +10,27 @@ function Elements() {
 	this.modal = document.querySelector(".modal");
 	this.cell;
 	this.healthBar.style.width = "100%";
+
+	//battle elements
+	var btxt;
+	this.foeStats;
+	this.e;
 }
 
 Elements.prototype = {
+	//battle log
+	battleEvents : function(msg) {
+		this.btxt = document.getElementById("battleTxt");
+		this.btxt.innerHTML = msg + "<br />" + this.btxt.innerHTML;
+	},
+	//display enemy stats in battle
+	displayEnemy : function(enemy,msg) {
+		this.btxt = document.getElementById("battleTxt");
+		this.foeStats = document.getElementById("eHP");
+		this.e = document.getElementById("estats");
+		this.e.innerHTML = enemy.name+": HP: <span id='enemyHealth'>"+enemy.hp+"</span>/"+enemy.maxHP;
+		//this.btxt.innerHTML = msg + "<br />" + btxt.innerHTML;
+	},
 	//set XY location on header
 	setXY : function(x,y) {
 		this.xy.textContent = "("+x+","+y+")"; 
@@ -65,18 +83,28 @@ Elements.prototype = {
 		//body div for logged messages
 		var bod = document.createElement("div");
 		bod.className = "battleLog";
+		bod.id = "battleTxt";
 		//action buttons
 		var strike = document.createElement("div");
 		strike.className = "button battleAction";
 		strike.textContent = "Attack";
+		strike.id = "attack";
+		var enemyHP = document.createElement("div");
+		enemyHP.id = "eHP";
+		enemyHP.className = "enemyStats";
 		var run = document.createElement("div");
 		run.className = "button battleAction";
 		run.textContent = "Run!";
+		//enemy
+		var ehp = document.createElement("span");
+		ehp.id = "estats";
 		//clear modal on run away
 		//to-do
 		//run away can fail (future)
 		run.addEventListener("click", this.clearModal.bind(this,run),false);
 		this.modal.appendChild(header);
+		bod.appendChild(enemyHP);
+		this.modal.appendChild(ehp);
 		this.modal.appendChild(bod);
 		this.modal.appendChild(strike);
 		this.modal.appendChild(run);
