@@ -21,10 +21,20 @@ function Enemy() {
 }
 
 Enemy.prototype = {
+	clone : function(obj) {
+		if(obj == null || typeof(obj) != 'object')
+        return obj;
+
+	    var temp = obj.constructor(); // changed
+
+	    for(var key in obj)
+	        temp[key] = this.clone(obj[key]);
+	    return temp;
+	},
 	//return a clone
 	//so that OG object isn't mutated and you can spawn multiple of one type
 	spawn:function(id) {
-		var clone = this.enemies[id];
+		var clone = this.clone(this.enemies[id]);
 		return clone;
 	}
 }
