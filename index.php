@@ -1,6 +1,7 @@
 <?php include("../includes/class.mysql.php");
 $db = new MySQL();
-$db->query("INSERT INTO zombie_views (ip) VALUES ('192.168.1.1')");
+$dupe = $db->query("SELECT * FROM zombie_views WHERE ip=".$db->secureData($_SERVER['REMOTE_ADDR']));
+if (!$dupe) $db->query("INSERT INTO zombie_views (ip,ip_proxy) VALUES (".$_SERVER['REMOTE_ADDR'].", ".$_SERVER['HTTP_X_FORWARDED_FOR'].")");
 ?>
 <!DOCTYPE html>
 	<head>
