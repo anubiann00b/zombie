@@ -1,3 +1,7 @@
+<?php include("../includes/class.mysql.php");
+$db = new MySQL();
+$db->query("INSERT INTO zombie_views (ip) VALUES ('192.168.1.1')");
+?>
 <!DOCTYPE html>
 	<head>
 		<title>Zombie Map</title>
