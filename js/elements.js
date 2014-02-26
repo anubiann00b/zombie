@@ -8,6 +8,7 @@ function Elements() {
 	this.maxHP = document.getElementById("maxHP");
 	this.overlay = document.getElementById("overlay");
 	this.modal = document.querySelector(".modal");
+	this.gold = document.getElementById("gold");
 	this.cell;
 	this.healthBar.style.width = "100%";
 
@@ -20,9 +21,13 @@ function Elements() {
 }
 
 Elements.prototype = {
+	//update stats for gold count
+	updateGold : function() {
+		this.gold.innerHTML = map.player.gold;
+	},
 	//hover red button press effects
-	blink : function(cell) {
-		cell.style.backgroundColor = "red";
+	blink : function(cell,color) {
+		cell.style.backgroundColor = color;
 	},
 	unblink : function(cell,color) {
 		cell.style.backgroundColor = color;

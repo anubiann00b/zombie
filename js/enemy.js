@@ -9,7 +9,9 @@ function Enemy() {
 			hp:8,
 			maxHP:8,
 			weapon:"Rancid Nails",
-			attack: "strikes"
+			attack: "strikes",
+			goldMin: 1,
+			goldMax: 4
 		},
 		{
 			name:"Zombie",
@@ -19,7 +21,9 @@ function Enemy() {
 			hp:15,
 			maxHP:15,
 			weapon:"Infectious Bite",
-			attack:"snaps"
+			attack:"snaps",
+			goldMin: 3,
+			goldMax: 7
 		}
 	];
 }
