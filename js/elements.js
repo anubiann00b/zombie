@@ -20,6 +20,9 @@ function Elements() {
 }
 
 Elements.prototype = {
+	blink : function(cell) {
+		cell.style.backgroundColor = "red";
+	},
 	//disable actions on battle end
 	disableActions : function() {
 		this.run = document.getElementById("run");
@@ -27,6 +30,10 @@ Elements.prototype = {
 		//cloneNode to remove event listeners to prevent spam attacks on battle end
 		var attack = this.attack.cloneNode(true);
 		var run = this.run.cloneNode(true);
+		attack.style.backgroundColor = "gray";
+		run.style.backgroundColor = "gray";
+		run.style.color = "black";
+		attack.style.color = "black";
 		this.modal.replaceChild(attack,this.attack);
 		this.modal.replaceChild(run,this.run);
 	},

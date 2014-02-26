@@ -41,6 +41,9 @@ h2, h1, h3, h4, h5, h6 {
 td.map {
 	background-color:#DDD;
 }
+td.map:hover {
+	background-color: grey;
+}
 .health {
 	height:12px;
 	position:relative;

@@ -36,13 +36,13 @@ Battle.prototype = {
 	battleOverWin : function() {
 		map.elements.disableActions();
 		map.elements.battleEvent("- You have defeated the "+this.foe.name+"!");
-		map.elements.eventMsg("- You bested a "+this.foe.name+" in battle!");
+		map.elements.eventMsg("You bested a "+this.foe.name+" in battle!");
 		setTimeout(map.elements.clearModal.bind(map.elements),2500);
 		map.elements.updateHP();
 	},
 	battleOverLose : function() {
 		map.elements.disableActions();
-		map.elements.eventMsg("- Your blood soaks the earth as the "+this.foe.name+" devours your lifeless corpse...");
+		map.elements.eventMsg("Your blood soaks the earth as the "+this.foe.name+" devours your lifeless corpse...");
 		setTimeout(map.elements.clearModal.bind(map.elements),2500);
 		map.elements.updateHP();
 	}

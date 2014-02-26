@@ -59,6 +59,7 @@ Map.prototype = {
 
 	                //add event handler for the click event (move)
 	                cell.addEventListener("click", this.move.bind(this,cell), false);
+	                cell.addEventListener("mousedown", this.elements.blink.bind(this,cell), false);
 	                cell.className = 'map';
 	            }
 	            //add cell to row
