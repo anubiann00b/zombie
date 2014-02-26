@@ -1,7 +1,17 @@
-<?php include("../includes/class.mysql.php");
+<?php 
+include("../includes/class.mysql.php");
 $db = new MySQL();
-$dupe = $db->query("SELECT * FROM zombie_views WHERE ip=".$db->secureData($_SERVER['REMOTE_ADDR']));
-if (!$dupe) $db->query("INSERT INTO zombie_views (ip,ip_proxy) VALUES (".$_SERVER['REMOTE_ADDR'].", ".$_SERVER['HTTP_X_FORWARDED_FOR'].")");
+$dupe = $db->query("SELECT * FROM zombie_views WHERE ip='".$db->escape($_SERVER['REMOTE_ADDR'])."'");
+if (!mysql_fetch_assoc($dupe)) {
+	$proxy = $_SERVER['HTTP_X_FORWARDED_FOR'];
+	if (!$proxy) $proxy = null;
+	$db->query("INSERT INTO zombie_views (ip,ip_proxy) 
+		VALUES (
+			'".$db->escape($_SERVER['REMOTE_ADDR'])."',
+			'".$db->escape($proxy)."'
+		)
+	");
+}
 ?>
 <!DOCTYPE html>
 	<head>
