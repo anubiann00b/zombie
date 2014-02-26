@@ -20,8 +20,12 @@ function Elements() {
 }
 
 Elements.prototype = {
+	//hover red button press effects
 	blink : function(cell) {
 		cell.style.backgroundColor = "red";
+	},
+	unblink : function(cell,color) {
+		cell.style.backgroundColor = color;
 	},
 	//disable actions on battle end
 	disableActions : function() {

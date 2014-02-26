@@ -1,8 +1,15 @@
 function Battle(eid) {
 	this.foe = map.enemy.spawn(eid);
 	var atk = document.getElementById("attack");
+	//bind all the events!
 	atk.addEventListener("click",this.playerDealDamage.bind(this),false);
 	atk.addEventListener("click",this.enemyDealDamage.bind(this),false);
+	atk.addEventListener("mousedown",map.elements.blink.bind(this,atk),false);
+	atk.addEventListener("mouseup",map.elements.unblink.bind(this,atk,"white"),false);
+
+	var run = document.getElementById("run");
+	run.addEventListener("mousedown",map.elements.blink.bind(this,run),false);
+	run.addEventListener("mouseup",map.elements.unblink.bind(this,run,"white"),false);
 }
 
 Battle.prototype = {
