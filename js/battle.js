@@ -18,7 +18,7 @@ Battle.prototype = {
 	},
 	giveGold : function(num) {
 		if (num) var gold = num;
-		else var gold = Math.floor(Math.random()*(this.foe.goldMax-this.foe.goldMax+1))+this.foe.goldMin;
+		else var gold = Math.floor(Math.random()*(this.foe.goldMax-this.foe.goldMin+1))+this.foe.goldMin;
 		map.elements.eventMsg("You have found "+gold+" gold on the "+this.foe.name);
 		map.player.gold += gold;
 		map.elements.updateGold();
