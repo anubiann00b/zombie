@@ -4,6 +4,7 @@ function Player() {
 	this.min = 1;
 	this.max = 3;
 	this.equipName = "Fists";
+	this.gold = 0;
 }
 
 Player.prototype = {

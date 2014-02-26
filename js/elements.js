@@ -15,20 +15,33 @@ function Elements() {
 	var btxt;
 	this.foeStats;
 	this.e;
+	this.attack;
+	this.run;
 }
 
 Elements.prototype = {
+	//disable actions on battle end
+	disableActions : function() {
+		this.run = document.getElementById("run");
+		this.attack = document.getElementById("attack");
+		//cloneNode to remove event listeners to prevent spam attacks on battle end
+		var attack = this.attack.cloneNode(true);
+		var run = this.run.cloneNode(true);
+		this.modal.replaceChild(attack,this.attack);
+		this.modal.replaceChild(run,this.run);
+	},
 	//battle log
 	battleEvent : function(msg) {
 		this.btxt = document.getElementById("battleTxt");
 		this.btxt.innerHTML = msg + "<br />" + this.btxt.innerHTML;
 	},
 	//display enemy stats in battle
-	displayEnemy : function(enemy) {
+	displayHP : function(enemy) {
 		this.btxt = document.getElementById("battleTxt");
 		this.foeStats = document.getElementById("eHP");
 		this.e = document.getElementById("estats");
 		this.e.innerHTML = enemy.name+": HP: <span id='enemyHealth'>"+enemy.hp+"</span>/"+enemy.maxHP;
+		this.e.innerHTML += "<br />Your HP: <span id='myHP'>"+map.player.hp+"</span>/"+map.player.maxHP;
 	},
 	//set XY location on header
 	setXY : function(x,y) {
@@ -94,6 +107,7 @@ Elements.prototype = {
 		var run = document.createElement("div");
 		run.className = "button battleAction";
 		run.textContent = "Run!";
+		run.id = "run";
 		//enemy
 		var ehp = document.createElement("span");
 		ehp.id = "estats";

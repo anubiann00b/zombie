@@ -6,6 +6,7 @@ function Map() {
 	this.elements = new Elements();
 	this.player = new Player();
 	this.enemy = new Enemy();
+	this.battle;
 }
 
 Map.prototype = {
@@ -84,14 +85,12 @@ Map.prototype = {
 			return;
 		}
 
-		//go away you whore
-		this.player.setHP(-1);
-
 		//fix me
 		if ((Math.random() < .1)) {
 			this.elements.battle("You've Been Attacked!");
-			battle = new Battle(0);
-			battle.init();
+			var id = ~~(Math.random()*(map.enemy.enemies.length)); //~~ is the same as Math.floor for positive numbers you tool //shortcut win
+			this.battle = new Battle(id);
+			this.battle.init();
 		}
 		else msg = "Nothing here";
 
