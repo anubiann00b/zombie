@@ -52,7 +52,7 @@ Elements.prototype = {
 	},
 	//set XY location on header
 	setXY : function(x,y) {
-		this.xy.textContent = "("+x+","+y+")"; 
+		this.xy.textContent = "You are at: ("+x+","+y+")"; 
 	},
 	//top to bottom event log
 	eventMsg : function(msg) {
